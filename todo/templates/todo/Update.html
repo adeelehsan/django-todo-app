@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if taske %}
+    <form action="{% url 'todo:update' taske.id%}" method="post">
+    {% csrf_token %}
+    Title:
+    <br>
+    <input type="text" name="title" value={{taske.title}}/>
+    <br>
+    <br>
+    Description:
+    <br>
+    <textarea rows="4" cols="50" name="description"> {{taske.description}} </textarea><br>
+    <input type="submit" value="Done" />
+    </form>
+{%else%}
+    <h3>Nothing to see here</h3>
+{%endif%}
+</body>
+</html>

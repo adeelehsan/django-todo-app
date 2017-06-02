@@ -10,7 +10,7 @@
     {% csrf_token %}
     Title:
     <br>
-    <input type="text" name="title" value={{taske.title}}/>
+    <textarea rows="2" cols="50" name="title">{{taske.title}}</textarea>
     <br>
     <br>
     Description:

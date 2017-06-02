@@ -5,19 +5,19 @@
     <title>Index</title>
 </head>
 <body>
-    {% if todo_list %}
-        <ul>
-            {% for todo in todo_list%}
-                <li> <a href="{{todo.id}}/detail">
-                    <h3>{{todo.title}}</h3>
-                </a>
+{% if todo_list %}
+<ul>
+    {% for todo in todo_list%}
+    <li><a href="{{todo.id}}/detail">
+        <h3>{{todo.title}}</h3>
+    </a>
 
-                </li>
-            {% endfor %}
-        </ul>
-    {%else%}
-        <p>To do List is Empty</p>
-    {%endif%}
-     <button><a href = "{% url 'todo:create' %}"> Add Task to List </a></button>
+    </li>
+    {% endfor %}
+</ul>
+{%else%}
+<p>To do List is Empty</p>
+{%endif%}
+<button><a href="{% url 'todo:create' %}"> Add Task to List </a></button>
 </body>
 </html>

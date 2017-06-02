@@ -7,17 +7,17 @@
 <body>
 <br>
 <form action="{% url 'todo:create'%}" method="post">
-{% csrf_token %}
+    {% csrf_token %}
     Title:
     <br>
-    <input type="text" name="title" />
+    <input type="text" name="title"/>
     <br>
     <br>
     Description:
     <br>
     <textarea rows="4" cols="50" name="description"> </textarea>
     <br>
-<input type="submit" value="Done" />
+    <input type="submit" value="Done"/>
 </form>
 </body>
 </html>

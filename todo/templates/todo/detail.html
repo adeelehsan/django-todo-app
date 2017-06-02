@@ -7,13 +7,14 @@
 <body>
 {% if taske %}
 
-    <h3> {{taske.description}}</h3>
+<h3> {{taske.description}}</h3>
 
 {%else%}
-    <h3>Nothing to see here</h3>
+<h3>Nothing to see here</h3>
 {%endif%}
- <button><a href = "{% url 'todo:update' taske.id %}"> update </a></button>
 <br>
- <button><a href = "{% url 'todo:delete' taske.id %}"> Delete Task </a></button>
+<button><a href="{% url 'todo:update' taske.id %}"> update </a></button>
+<br><br>
+<button><a href="{% url 'todo:delete' taske.id %}"> Delete Task </a></button>
 </body>
 </html>

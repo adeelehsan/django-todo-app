@@ -2,13 +2,16 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render
-from django.contrib.auth.models import User
+from django.contrib.auth.models import Permission
 from .models import Task
 
 
 def index(request):
-    #user = User.objects.all()
-    todo_list = Task.objects.filter(user=request.user)
+    if request.user.has_perm('can view all task'):
+        print "I was there"
+    else:
+        todo_list = Task.objects.filter(user=request.user)
+    todo_list = Task.objects.all()
     context = {'todo_list': todo_list}
     return render(request, 'todo/index.html', context)
 

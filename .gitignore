@@ -1,7 +1,7 @@
 ### PyCharm ###
-
+/todo/static
 .idea/
-
+loggingFile.txt
 # User-specific stuff:
 .idea/**/workspace.xml
 .idea/**/tasks.xml

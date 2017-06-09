@@ -8,15 +8,17 @@
 <br>
 <form action="{% url 'todo:create'%}" method="post">
     {% csrf_token %}
-    Title:
-    <br>
-    <input type="text" name="title"/>
-    <br>
-    <br>
-    Description:
-    <br>
-    <textarea rows="4" cols="50" name="description"> </textarea>
-    <br>
+    <!--Title:-->
+    <!--<br>-->
+    <!--<input type="text" name="title"/>-->
+    <!--<br>-->
+    <!--<br>-->
+    <!--Description:-->
+    <!--<br>-->
+    <!--<textarea rows="4" cols="50" name="description"> </textarea>-->
+    <!--<br>-->
+
+    {{form}}
     <input type="submit" value="Done"/>
 </form>
 </body>

@@ -5,17 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-{% if taske %}
-    <form action="{% url 'todo:update' taske.id%}" method="post">
+{% if form %}
+    <form action="./update" method="post">
+
     {% csrf_token %}
-    Title:
-    <br>
-    <textarea rows="2" cols="50" name="title">{{taske.title}}</textarea>
-    <br>
-    <br>
-    Description:
-    <br>
-    <textarea rows="4" cols="50" name="description"> {{taske.description}} </textarea><br>
+    <!--Title:-->
+    <!--<br>-->
+    <!--<textarea rows="2" cols="50" name="title">{{taske.title}}</textarea>-->
+    <!--<br>-->
+    <!--<br>-->
+    <!--Description:-->
+    <!--<br>-->
+    <!--<textarea rows="4" cols="50" name="description"> {{taske.description}} </textarea><br>-->
+        {{form}}
     <input type="submit" value="Done" />
     </form>
 {%else%}

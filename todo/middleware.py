@@ -11,7 +11,4 @@ class TimezoneMiddleware(object):
         file.write(request.user.username)
         file.write(timezone.now().time().__str__())
         file.close()
-        print "Middleware executed"
-        print request.user.username
-        print timezone.now()
         return self.get_response(request)

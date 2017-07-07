@@ -3,10 +3,12 @@ from django.http import HttpResponseRedirect
 from django.views.decorators.http import require_GET
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, get_object_or_404
 from .decorators import user_has_perm
 from .forms import TaskForm
-from .models import Task
+from datetime import datetime
+from .models import Task, TaskManager
 
 @login_required
 @user_has_perm
@@ -38,9 +40,10 @@ def create(request):
 def detail(request, todo_id):
     try:
         task = Task.objects.get(id=todo_id)
-        context = {'taske': task}
+        form = TaskForm(instance=task)
+        context = {'form': form, 'taske':task}
         return render(request, 'todo/detail.html', context)
-    except (KeyError, Task.DoesNotExit):
+    except (KeyError, ObjectDoesNotExist):
         return render(request, 'todo/detail.html', {})
 
 
@@ -60,7 +63,17 @@ def update(request, todo_id):
     task = Task.objects.get(id=int(todo_id))
     form = TaskForm(request.POST, instance=task)
     if form.is_valid():
+        if form.cleaned_data['status'] == 'complete':
+            task.completion_date = datetime.now().date()
+        # import pdb;pdb.set_trace()
         form.save()
         return HttpResponseRedirect(reverse('todo:index'))
     else:
         return render(request, 'todo/update.html', {'form': form})
+
+def summary(request):
+    t = TaskManager()
+    s_info = t.with_counts()
+    context = {'summary': s_info}
+    # import pdb;pdb.set_trace()
+    return render(request, 'todo/summary.html', context)
